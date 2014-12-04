@@ -1,0 +1,44 @@
+{
+  "name": "redate",
+  "description": "JavaScript Date replacement",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ichernev/redate",
+  "author": {
+    "name": "Iskren Chernev",
+    "email": "iskren.chernev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ichernev/redate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ichernev/redate/issues"
+  },
+  "licenses": [
+    {
+      "type": "BSD-3-Clause",
+      "url": "https://github.com/ichernev/utc_date/blob/master/LICENSE-BSD-3-Clause"
+    }
+  ],
+  "main": "lib/redate",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt mocha"
+  },
+  "devDependencies": {
+    "6to5": "latest",
+    "mocha": "latest",
+    "chai": "latest",
+    "chance": "latest",
+    "grunt-mocha-test": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-clean": "latest",
+    "load-grunt-tasks": "latest",
+    "grunt-6to5": "latest",
+    "grunt": "latest"
+  },
+  "keywords": []
+}
