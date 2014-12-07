@@ -26,8 +26,8 @@ RawDate
   * for months -> careful with 29, 30, 31
   * !! for days -> implement proper month overflow (unix time in days)
   * for rest -- work on ms values
-* add / subtract
-  * reuse set / get
+! add / subtract
+  ! reuse set / get
 * toISOString
 
 LocalDate

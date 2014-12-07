@@ -1,6 +1,7 @@
 import { NativeDateStorage } from '../date-storage/native';
 import { findInvalidUnit } from './find-invalid-unit';
 import { isLeapYear } from './is-leap-year';
+import { daysPerMonth } from './days-per-month';
 
 export class RawDate {
     static resetDefault() {
@@ -71,6 +72,22 @@ export class RawDate {
         return this._s.getDate();
     }
 
+    getHours() {
+        return this._s.getHours();
+    }
+
+    getMinutes() {
+        return this._s.getMinutes();
+    }
+
+    getSeconds() {
+        return this._s.getSeconds();
+    }
+
+    getMilliseconds() {
+        return this._s.getMilliseconds();
+    }
+
     setYear(y) {
         if (y !== this._s.getYear()) {
             if (this._s.getMonth() === 1 && this._s.getDate() === 29 &&
@@ -81,6 +98,53 @@ export class RawDate {
                 this._s.setYear(y);
             }
         }
+        return this;
+    }
+
+    setMonth(m) {
+        var ny = this.getYear() + Math.floor(m / 12);
+        var nm = m % 12;
+        if (nm < 0) {
+            nm += 12;
+        }
+
+        var maxDate = daysPerMonth(ny, nm);
+        if (maxDate < this.getDate()) {
+            this._s.setDate(maxDate);
+        }
+        this._s.setMonth(nm);
+        this._s.setYear(ny);
+
+        return this;
+    }
+
+    setDate(d) {
+        this._s.setUnixMs(this._s.getUnixMs() + (d - this.getDate()) * 864e5);
+
+        return this;
+    }
+
+    setHours(h) {
+        this._s.setUnixMs(this._s.getUnixMs() + (h - this.getHours()) * 36e5);
+
+        return this;
+    }
+
+    setMinutes(m) {
+        this._s.setUnixMs(this._s.getUnixMs() + (m - this.getMinutes()) * 6e4);
+
+        return this;
+    }
+
+    setSeconds(s) {
+        this._s.setUnixMs(this._s.getUnixMs() + (s - this.getSeconds()) * 1e3);
+
+        return this;
+    }
+
+    setMilliseconds(ms) {
+        this._s.setUnixMs(this._s.getUnixMs() + (ms - this.getMilliseconds()));
+
         return this;
     }
 }

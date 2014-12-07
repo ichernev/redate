@@ -43,31 +43,39 @@ export class NativeDateStorage {
         return this._d.getUTCMilliseconds();
     }
 
+    getUnixMs() {
+        return this._d.valueOf();
+    }
+
     setYear(y) {
-        return this._d.setUTCFullYear(y);
+        this._d.setUTCFullYear(y);
     }
 
     setMonth(month) {
-        return this._d.setUTCMonth(month);
+        this._d.setUTCMonth(month);
     }
 
     setDate(d) {
-        return this._d.setUTCDate(d);
+        this._d.setUTCDate(d);
     }
 
     setHours(h) {
-        return this._d.setUTCHours(h);
+        this._d.setUTCHours(h);
     }
 
     setMinutes(m) {
-        return this._d.setUTCMinutes(m);
+        this._d.setUTCMinutes(m);
     }
 
     setSeconds(s) {
-        return this._d.setUTCSeconds(s);
+        this._d.setUTCSeconds(s);
     }
 
     setMilliseconds(ms) {
-        return this._d.setUTCMilliseconds(ms);
+        this._d.setUTCMilliseconds(ms);
+    }
+
+    setUnixMs(ums) {
+        this._d = new Date(ums);
     }
 }
